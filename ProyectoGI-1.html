@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SISTEMA DE GESTIÓN DE INCIDENTES TIC MISY S.A</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>GESTIÓN DE INCIDENTES TI MISY S.A</h1>
+        <p>Resolviendo problemas, asegurando continuidad</p>
+    </header>
+
+    <nav aria-label="Menú principal">
+  <ul>
+    <li><a href="ProyectoGI.html">Inicio</a></li>
+    <li><a href="ProyectoGI-1.html">Registro Incidentes</a></li>
+    <li><a href="ProyectoGI-2.html">Visualizar Tickets</a></li>
+      </ul>
+</nav>
+
+    <main>
+
+        <section>
+
+            <h2>Formulario de Reporte de Incidente</h2>
+
+            <form>
+
+                <fieldset>
+
+                    <legend>Datos del Incidente</legend>
+
+                    <label for="nombre">Nombre:</label><br>
+                    <input type="text" id="nombre" required>
+                    <br><br>
+
+                    <label for="correo">Correo Electrónico:</label><br>
+                    <input type="email" id="correo" required>
+                    <br><br>
+
+                    <label for="categoria">Categoría:</label><br>
+                    <select id="categoria" required>
+                        <option value="">Seleccione</option>
+                        <option>Hardware</option>
+                        <option>Software</option>
+                        <option>Red</option>
+                    </select>
+                    <br><br>
+
+                    <label for="prioridad">Prioridad:</label><br>
+                    <select id="prioridad" required>
+                        <option value="">Seleccione</option>
+                        <option>Alta</option>
+                        <option>Media</option>
+                        <option>Baja</option>
+                    </select>
+                    <br><br>
+
+                    <label for="fecha">Fecha:</label><br>
+                    <input type="date" id="fecha" required>
+                    <br><br>
+
+                    <label for="descripcion">Descripción:</label><br>
+                    <textarea id="descripcion" rows="5" cols="50" required></textarea>
+                    <br><br>
+
+                    <input type="submit" value="Registrar">
+                    <input type="reset" value="Limpiar">
+
+                </fieldset>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Derechos UTM</p>
+    </footer>
+
+</body>
+
+</html>
