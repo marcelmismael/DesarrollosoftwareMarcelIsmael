@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE GESTIÓN DE INCIDENTES TIC MISY S.A</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>GESTIÓN DE INCIDENTES TI MISY S.A</h1>
+        <p>Resolviendo problemas, asegurando continuidad</p>
+    </header>
+
+    <nav aria-label="Menú principal">
+        <ul>
+            <li><a href="ProyectoGI.html">Inicio</a></li>
+            <li><a href="ProyectoGI-1.html">Registro Incidentes</a></li>
+            <li><a href="ProyectoGI-2.html">Visualizar Tickets</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section>
+
+            <h2>Formulario de Reporte de Incidente</h2>
+
+            <div class="alerta alerta-info">
+                <span>ℹ</span>
+                <div><strong>Antes de enviar</strong>Completa todos los campos obligatorios para que el técnico pueda atender tu caso más rápido.</div>
+            </div>
+
+            <form>
+
+                <fieldset>
+
+                    <legend>Datos del Incidente</legend>
+
+                    <div class="campo">
+                        <label for="nombre">Nombre:</label>
+                        <input class="input" type="text" id="nombre" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="correo">Correo Electrónico:</label>
+                        <input class="input" type="email" id="correo" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="categoria">Categoría:</label>
+                        <select class="select" id="categoria" required>
+                            <option value="">Seleccione</option>
+                            <option>Hardware</option>
+                            <option>Software</option>
+                            <option>Red</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="prioridad">Prioridad:</label>
+                        <select class="select" id="prioridad" required>
+                            <option value="">Seleccione</option>
+                            <option>Alta</option>
+                            <option>Media</option>
+                            <option>Baja</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="fecha">Fecha:</label>
+                        <input class="input" type="date" id="fecha" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea class="textarea" id="descripcion" rows="5" cols="50" required></textarea>
+                    </div>
+
+                    <div class="fila-componentes">
+                        <input class="btn btn-primario" type="submit" value="Registrar">
+                        <input class="btn btn-secundario" type="reset" value="Limpiar">
+                    </div>
+
+                </fieldset>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Derechos UTM</p>
+    </footer>
+
+</body>
+
+</html>

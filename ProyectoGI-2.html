@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE GESTIÓN DE INCIDENTES TIC MISY S.A</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>GESTIÓN DE INCIDENTES TI MISY S.A</h1>
+        <p>Resolviendo problemas, asegurando continuidad</p>
+    </header>
+
+    <nav aria-label="Menú principal">
+        <ul>
+            <li><a href="ProyectoGI.html">Inicio</a></li>
+            <li><a href="ProyectoGI-1.html">Registro Incidentes</a></li>
+            <li><a href="ProyectoGI-2.html">Visualizar Tickets</a></li>
+        </ul>
+    </nav>
+
+    <main>
+
+        <section>
+
+            <h2>Listado de Tickets</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Categoría</th>
+                        <th>Prioridad</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Marcel Ismael Sinche Yumisaca</td>
+                        <td>Hardware</td>
+                        <td><span class="badge badge-alta">Alta</span></td>
+                        <td><span class="badge badge-abierto">Abierto</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>002</td>
+                        <td>Juan Carlos Pérez Chasi</td>
+                        <td>Software</td>
+                        <td><span class="badge badge-media">Media</span></td>
+                        <td><span class="badge badge-en-proceso">En Proceso</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>003</td>
+                        <td>María Elena López Herrera</td>
+                        <td>Red</td>
+                        <td><span class="badge badge-alta">Alta</span></td>
+                        <td><span class="badge badge-resuelto">Resuelto</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>004</td>
+                        <td>Carlos Arturo Vera Villa</td>
+                        <td>Software</td>
+                        <td><span class="badge badge-baja">Baja</span></td>
+                        <td><span class="badge badge-cerrado">Cerrado</span></td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <section>
+
+            <h2>Tickets — Vista en tarjetas</h2>
+
+            <div class="grid-tarjetas">
+
+                <div class="tarjeta tarjeta--alta">
+                    <div class="tarjeta__encabezado">
+                        <h3 class="tarjeta__titulo">Marcel Ismael Sinche Yumisaca</h3>
+                        <span class="tarjeta__id">#001</span>
+                    </div>
+                    <p class="tarjeta__cuerpo">Categoría: Hardware</p>
+                    <div class="tarjeta__pie">
+                        <span class="badge badge-alta">Alta</span>
+                        <span class="badge badge-abierto">Abierto</span>
+                    </div>
+                </div>
+
+                <div class="tarjeta tarjeta--media">
+                    <div class="tarjeta__encabezado">
+                        <h3 class="tarjeta__titulo">Juan Carlos Pérez Chasi</h3>
+                        <span class="tarjeta__id">#002</span>
+                    </div>
+                    <p class="tarjeta__cuerpo">Categoría: Software</p>
+                    <div class="tarjeta__pie">
+                        <span class="badge badge-media">Media</span>
+                        <span class="badge badge-en-proceso">En Proceso</span>
+                    </div>
+                </div>
+
+                <div class="tarjeta tarjeta--alta">
+                    <div class="tarjeta__encabezado">
+                        <h3 class="tarjeta__titulo">María Elena López Herrera</h3>
+                        <span class="tarjeta__id">#003</span>
+                    </div>
+                    <p class="tarjeta__cuerpo">Categoría: Red</p>
+                    <div class="tarjeta__pie">
+                        <span class="badge badge-alta">Alta</span>
+                        <span class="badge badge-resuelto">Resuelto</span>
+                    </div>
+                </div>
+
+                <div class="tarjeta tarjeta--baja">
+                    <div class="tarjeta__encabezado">
+                        <h3 class="tarjeta__titulo">Carlos Arturo Vera Villa</h3>
+                        <span class="tarjeta__id">#004</span>
+                    </div>
+                    <p class="tarjeta__cuerpo">Categoría: Software</p>
+                    <div class="tarjeta__pie">
+                        <span class="badge badge-baja">Baja</span>
+                        <span class="badge badge-cerrado">Cerrado</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section>
+
+            <h2>Panel Técnico</h2>
+
+            <ul>
+                <li>Asignar incidentes.</li>
+                <li>Actualizar estados.</li>
+                <li>Registrar soluciones.</li>
+                <li>Cerrar tickets.</li>
+            </ul>
+
+            <div class="fila-componentes">
+                <button class="btn btn-primario">Asignar técnico</button>
+                <button class="btn btn-secundario">Actualizar estado</button>
+                <button class="btn btn-peligro">Cerrar ticket</button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Derechos UTM</p>
+    </footer>
+
+</body>
+
+</html>
