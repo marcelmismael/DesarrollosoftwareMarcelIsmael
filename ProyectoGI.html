@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SISTEMA DE GESTIÓN DE INCIDENTES TIC MISY S.A</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>GESTIÓN DE INCIDENTES TI MISY S.A</h1>
+    <p>Resolviendo problemas, asegurando continuidad</p>
+  </header>
+
+  <nav aria-label="Menú principal">
+    <ul>
+      <li><a href="ProyectoGI.html">Inicio</a></li>
+      <li><a href="ProyectoGI-1.html">Registro Incidentes</a></li>
+      <li><a href="ProyectoGI-2.html">Visualizar Tickets</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Sistema Help Desk</h2>
+      <p>Plataforma destinada al registro, seguimiento y resolución de incidentes tecnológicos.</p>
+    </section>
+
+    <section>
+      <article>
+        <h3>Registrar Incidente</h3>
+        <p>Permite a los usuarios reportar problemas relacionados con Hardware, Software y Red.</p>
+      </article>
+
+      <article>
+        <h3>Visualizar Tickets</h3>
+        <p>Consulta del estado de los incidentes registrados.</p>
+      </article>
+
+      <article>
+        <h3>Panel de Técnico</h3>
+        <p>Gestión, asignación y resolución de tickets.</p>
+      </article>
+
+      <article>
+        <h3>Reportes</h3>
+        <p>Generación de estadísticas e informes del servicio.</p>
+      </article>
+
+      <article>
+        <h3>Configuración</h3>
+        <p>Administración de usuarios, roles y parámetros.</p>
+      </article>
+    </section>
+
+    <section>
+      <h2>Design System — Vista rápida</h2>
+      <p>Biblioteca de componentes corporativos definida en <code>style.css</code>, diseñada para asegurar la uniformidad de la imagen institucional y la experiencia del usuario.</p>
+      <div class="contenedor-componentes">
+
+        <div class="muestra">
+          <p class="muestra__titulo">Botones</p>
+          <div class="fila-componentes">
+            <button class="btn btn-primario">Guardar</button>
+            <button class="btn btn-secundario">Cancelar</button>
+            <button class="btn btn-peligro">Eliminar</button>
+            <button class="btn btn-primario" disabled>Deshabilitado</button>
+          </div>
+        </div>
+
+        <div class="muestra">
+          <p class="muestra__titulo">Badges de prioridad y estado</p>
+          <div class="fila-componentes">
+            <span class="badge badge-alta">Alta</span>
+            <span class="badge badge-media">Media</span>
+            <span class="badge badge-baja">Baja</span>
+            <span class="badge badge-abierto">Abierto</span>
+            <span class="badge badge-en-proceso">En Proceso</span>
+            <span class="badge badge-resuelto">Resuelto</span>
+            <span class="badge badge-cerrado">Cerrado</span>
+          </div>
+        </div>
+
+        <div class="muestra">
+          <p class="muestra__titulo">Alertas</p>
+          <div class="alerta alerta-exito">
+            <span>✔</span>
+            <div><strong>Ticket resuelto</strong>El incidente #003 fue cerrado correctamente.</div>
+          </div>
+          <div class="alerta alerta-advertencia">
+            <span>⚠</span>
+            <div><strong>Atención</strong>Tienes 2 tickets de prioridad alta sin asignar.</div>
+          </div>
+          <div class="alerta alerta-error">
+            <span>✖</span>
+            <div><strong>Error de envío</strong>No se pudo registrar el incidente. Verifica los campos.</div>
+          </div>
+          <div class="alerta alerta-info">
+            <span>ℹ</span>
+            <div><strong>Información</strong>El panel técnico se actualiza cada 5 minutos.</div>
+          </div>
+        </div>
+
+        <div class="muestra">
+          <p class="muestra__titulo">Tarjeta de ticket (Card)</p>
+          <div class="grid-tarjetas">
+            <div class="tarjeta tarjeta--alta">
+              <div class="tarjeta__encabezado">
+                <h3 class="tarjeta__titulo">Falla de red en piso 3</h3>
+                <span class="tarjeta__id">#001</span>
+              </div>
+              <p class="tarjeta__cuerpo">Sin conexión a internet en el área de contabilidad desde las 07:35</p>
+              <div class="tarjeta__pie">
+                <span class="badge badge-alta">Alta</span>
+                <span class="badge badge-abierto">Abierto</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <aside>
+    <h3>Información</h3>
+    <p>Sistema orientado a mejorar la atención y seguimiento de incidentes tecnológicos.</p>
+  </aside>
+
+  <footer>
+    <p>Derechos UTM sinche7445@utm.edu.ec</p>
+  </footer>
+
+</body>
+</html>
