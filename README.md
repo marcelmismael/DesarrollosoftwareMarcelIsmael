@@ -46,49 +46,79 @@ mvn spring-boot:run
 - El backend valida nuevamente los datos con `@NotBlank` / `@NotNull`
   (defensa en profundidad: nunca confiar solo en el frontend).
 
-## Despliegue en la nube
+## Despliegue en la nube (camino simple, sin Docker)
 
-### 1. Backend (`mayte_api`) → Render / Railway
-1. Sube `mayte_api` a un repositorio de GitHub (rama independiente o
-   repo propio).
-2. En [Render](https://render.com) o [Railway](https://railway.app),
-   crea un servicio "Web Service" apuntando a ese repositorio.
-   - Build command: `mvn clean package -DskipTests`
-   - Start command: `java -jar target/mayte_api-0.0.1-SNAPSHOT.jar`
-3. Copia la URL pública que te asigna (ej.
-   `https://mayte-api.onrender.com`).
-4. **Importante:** por defecto la base de datos H2 es en memoria y se
-   borra al reiniciar el servicio. Para persistencia real en la nube
-   (requisito de la actividad), migra a una base gestionada como
-   PostgreSQL (Render/Railway la ofrecen gratis) o MongoDB Atlas, y
-   actualiza `application.properties` con las credenciales de conexión.
+Esta es la forma **más simple** de cumplir el requisito de la Actividad 9
+(persistencia remota + backend con URL pública + frontend en hosting
+estático), sin tocar Dockerfiles ni configurar servicios a mano.
 
-### 2. Frontend (`Alex_api`) → Vercel / Netlify / GitHub Pages
-1. Antes de compilar, edita `src/environments/environment.prod.ts` y
-   reemplaza `apiUrl` con la URL pública real del backend desplegado:
+### 1. Backend + Base de datos → Railway (todo en un solo lugar)
+
+1. Ve a [railway.app](https://railway.app) e inicia sesión con GitHub.
+2. **New Project → Deploy from GitHub repo** → selecciona tu repositorio.
+   - Si el repo contiene varias carpetas (`mayte_api`, `Alex_api`), en
+     "Settings" del servicio configura **Root Directory: `mayte_api`**.
+3. Railway detecta automáticamente que es un proyecto Maven (por el
+   `pom.xml`) y lo compila y ejecuta solo — **no necesita Dockerfile**, y
+   usa la misma versión de Java que indica `<java.version>` en el
+   `pom.xml`, así que no hay conflicto de versiones posible.
+4. En el mismo proyecto de Railway: **New → Database → PostgreSQL**
+   (un clic). Railway crea la base y las variables `PGHOST`, `PGPORT`,
+   `PGDATABASE`, `PGUSER`, `PGPASSWORD` automáticamente.
+5. En el servicio del backend, pestaña **Variables**, agrega:
+   ```
+   SPRING_PROFILES_ACTIVE=prod
+   ```
+   Con esto la app usa `application-prod.properties` (PostgreSQL) en vez
+   de H2. En tu máquina local, sin esa variable, sigue usando H2 igual
+   que siempre — no cambia nada de tu flujo local.
+6. En **Settings → Networking**, genera un dominio público (botón
+   "Generate Domain"). Copia esa URL — es tu backend en producción, por
+   ejemplo `https://mayte-api-production.up.railway.app`.
+
+### 2. Frontend → Netlify Drop (sin cuenta, sin CLI, sin config)
+
+1. Edita `src/environments/environment.prod.ts` con la URL real del
+   backend que te dio Railway:
    ```ts
    export const environment = {
      production: true,
-     apiUrl: 'https://mayte-api.onrender.com/tickets'
+     apiUrl: 'https://mayte-api-production.up.railway.app/tickets'
    };
    ```
-2. Compila para producción:
+2. En tu máquina, dentro de `Alex_api`:
    ```bash
    npm run build:prod
    ```
    Esto genera la carpeta `dist/alex-api/browser`.
-3. Sube esa carpeta (o conecta el repo) a Vercel, Netlify o GitHub Pages.
-   - En Vercel/Netlify: framework preset "Angular", output directory
-     `dist/alex-api/browser`.
-4. **CORS:** el backend ya tiene `@CrossOrigin(origins = "*")` en
-   `TicketController`, así que aceptará peticiones desde cualquier
-   dominio del frontend desplegado. Para producción real se recomienda
-   restringirlo al dominio final (ej. `https://alex-api.vercel.app`)
-   en vez de `"*"`.
+3. Ve a **[app.netlify.com/drop](https://app.netlify.com/drop)** y
+   **arrastra esa carpeta** (`dist/alex-api/browser`) directamente al
+   navegador. En segundos te da una URL pública funcionando
+   (ej. `https://tu-proyecto.netlify.app`). No requiere cuenta para
+   probarlo, aunque crear una gratis te permite volver a subir
+   actualizaciones y le da un nombre fijo.
 
-### 3. Checklist final de la actividad
-- [ ] Backend accesible por URL pública (no localhost)
-- [ ] Base de datos persistente en la nube (no H2 en memoria)
-- [ ] Frontend publicado en hosting estático
-- [ ] `environment.prod.ts` apuntando al backend público
-- [ ] CORS restringido al dominio final del frontend
+### 3. Ajustar CORS (un paso final, 1 línea)
+
+El backend ya acepta peticiones desde cualquier origen
+(`@CrossOrigin(origins = "*")` en `TicketController`), así que el paso 2
+funcionará sin configuración adicional. Si luego quieres restringirlo al
+dominio final de Netlify por seguridad, cambia el `"*"` por tu URL de
+Netlify.
+
+### Checklist final de la actividad
+- [ ] Backend con URL pública (Railway) ✅ no depende de localhost
+- [ ] Base de datos PostgreSQL remota (no H2 en memoria) ✅
+- [ ] Frontend publicado en hosting estático (Netlify) ✅
+- [ ] `environment.prod.ts` apunta a la URL real del backend
+- [ ] Probaste la URL de Netlify en el navegador y carga datos reales
+
+---
+
+## Alternativa avanzada: Render + Docker
+
+Si prefieres usar Render en vez de Railway, en la raíz de `PROYECTO III`
+hay un `render.yaml` (Blueprint) y un `Dockerfile` ya corregidos y
+funcionales para ese camino. Es más manual (recuerda que Docker exige que
+la versión de Java del `Dockerfile` coincida siempre con la del
+`pom.xml`), pero sirve si tu docente pide específicamente Render.
